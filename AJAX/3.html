@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+<p class="my-p"></p>
+
+<!-- 引入axios库 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // 使用axios函數，发送AJAX请求获取新闻数据
+    axios({
+        url:'https://hmajax.itheima.net/api/city',
+        //查詢數據時，通過params配置參數
+        params:{
+            pname:"黑龙江省"
+        }
+
+    }).then(result=>{
+        console.log(result.data.list)
+
+        //把準備好的省份列表插入頁面
+        document.querySelector('.my-p').innerHTML = result.data.list.join('<br>')
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+<p class="my-p"></p>
+
+<!-- 引入axios库 -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    // 使用axios函數，发送AJAX请求获取新闻数据
+    axios({
+        url:'https://hmajax.itheima.net/api/news'
+    }).then(result=>{
+        console.log(result)
+        console.log(result.data.data)
+        console.log(result.data.data.map(item=>item.title).join('<br>'))
+        //把準備好的新聞標題列表插入頁面
+        document.querySelector('.my-p').innerHTML = result.data.data.map(item=>item.title).join('<br>')
+    })
+
+
+</script>
+
+</body>
+</html>
